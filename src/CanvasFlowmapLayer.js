@@ -597,10 +597,6 @@
         this._animationCanvasElement.getContext('2d') :
         this._canvasElement.getContext('2d');
 
-      if (animate) {
-        ctx.beginPath();
-      }
-
       var originAndDestinationFieldIds = this.options.originAndDestinationFieldIds;
 
       this.originAndDestinationGeoJsonPoints.features.forEach(function(feature) {
@@ -625,21 +621,19 @@
           var symbol;
           if (animate) {
             symbol = this._getSymbolProperties(feature, this.options.animatedCanvasBezierStyle);
+            ctx.beginPath();
             this._animateCanvasLineSymbol(ctx, symbol, screenOriginPoint, screenDestinationPoint);
+            ctx.stroke();
+            ctx.closePath();
           } else {
             symbol = this._getSymbolProperties(feature, this.options.canvasBezierStyle);
             ctx.beginPath();
-            this._applyAnimatedCanvasLineSymbol(ctx, symbol, screenOriginPoint, screenDestinationPoint);
+            this._applyCanvasLineSymbol(ctx, symbol, screenOriginPoint, screenDestinationPoint);
             ctx.stroke();
             ctx.closePath();
           }
         }
       }, this);
-
-      if (animate) {
-        ctx.stroke();
-        ctx.closePath();
-      }
     },
 
     _getSymbolProperties: function(feature, canvasSymbolConfig) {
@@ -669,7 +663,7 @@
       return symbol;
     },
 
-    _applyAnimatedCanvasLineSymbol: function(ctx, symbolObject, screenOriginPoint, screenDestinationPoint) {
+    _applyCanvasLineSymbol: function(ctx, symbolObject, screenOriginPoint, screenDestinationPoint) {
       ctx.lineCap = symbolObject.lineCap;
       ctx.lineWidth = symbolObject.lineWidth;
       ctx.strokeStyle = symbolObject.strokeStyle;
