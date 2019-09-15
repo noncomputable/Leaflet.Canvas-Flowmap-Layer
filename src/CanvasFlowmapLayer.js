@@ -45,10 +45,10 @@
         type: 'simple',
         symbol: {
           // use canvas styling options (compare to CircleMarker styling below)
-          strokeStyle: 'rgba(255, 0, 51, 0.8)',
+          strokeStyle: 'rgb(94, 255, 31, 0.8)',
           lineWidth: 0.75,
           lineCap: 'round',
-          shadowColor: 'rgb(255, 0, 51)',
+          shadowColor: 'rgb(94, 255, 31)',
           shadowBlur: 1.5
         }
       },
@@ -57,11 +57,11 @@
         type: 'simple',
         symbol: {
           // use canvas styling options (compare to CircleMarker styling below)
-          strokeStyle: 'rgb(255, 46, 88)',
+          strokeStyle: 'rgb(94, 255, 31, 0.8)',
           lineWidth: 1.25,
           lineDashOffsetSize: 4, // custom property used with animation sprite sizes
           lineCap: 'round',
-          shadowColor: 'rgb(255, 0, 51)',
+          shadowColor: 'rgb(94, 255, 31)',
           shadowBlur: 2
         }
       },
